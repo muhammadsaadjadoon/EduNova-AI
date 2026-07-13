@@ -1,0 +1,10 @@
+/* Phase 9 runtime, accessibility and resilient interaction layer */
+.skip-link{position:fixed;left:16px;top:-80px;z-index:100000;padding:11px 16px;border-radius:12px;background:var(--text);color:var(--bg);font-weight:900;text-decoration:none;box-shadow:var(--shadow);transition:top .18s ease}.skip-link:focus{top:16px}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+[aria-busy="true"]{cursor:progress!important;opacity:.78;pointer-events:none}
+.runtime-spinner{display:inline-block;width:1em;height:1em;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;vertical-align:-.15em;animation:runtime-spin .7s linear infinite;margin-right:.45em}
+@keyframes runtime-spin{to{transform:rotate(360deg)}}
+.runtime-empty{padding:24px;text-align:center;border:1px dashed var(--line-2);border-radius:18px;color:var(--muted);background:rgba(255,255,255,.025)}
+.runtime-error{padding:14px;border:1px solid rgba(255,95,122,.35);border-radius:16px;background:rgba(255,95,122,.08);color:var(--text)}
+.modal[aria-hidden="true"]{display:none!important}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

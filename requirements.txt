@@ -1,0 +1,62 @@
+# AI Quiz Generator — Professional Requirements
+# Install locally:
+#   python -m pip install --upgrade pip
+#   python -m pip install -r requirements.txt
+#
+# Recommended Python: 3.11 or 3.12 for best ML package compatibility.
+
+# ────────────────────────────────────────────────────────────────
+# Web framework / API server
+# ────────────────────────────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+python-multipart>=0.0.9
+
+# ────────────────────────────────────────────────────────────────
+# Database / auth / validation
+# ────────────────────────────────────────────────────────────────
+sqlalchemy>=2.0.35
+werkzeug>=3.0.4
+pydantic>=2.9.2
+
+# Optional for Render/PostgreSQL deployment.
+# Uncomment only if you set DATABASE_URL to a PostgreSQL URL.
+# psycopg2-binary>=2.9.10
+
+# Optional if you want to load .env files locally.
+# Current app.py works without this unless you explicitly add dotenv loading.
+# python-dotenv>=1.0.1
+
+# ────────────────────────────────────────────────────────────────
+# Deep learning / transformers
+# ────────────────────────────────────────────────────────────────
+torch>=2.6.0
+transformers>=4.44.2
+sentence-transformers>=3.1.1
+sentencepiece>=0.2.0
+protobuf>=4.25.0
+
+# ────────────────────────────────────────────────────────────────
+# ML / numerical / data processing
+# ────────────────────────────────────────────────────────────────
+scikit-learn>=1.5.2
+numpy>=1.26.4
+pandas>=2.2.3
+
+# ────────────────────────────────────────────────────────────────
+# NLP helpers
+# ────────────────────────────────────────────────────────────────
+nltk>=3.9.1
+
+# ────────────────────────────────────────────────────────────────
+# PDF extraction
+# ────────────────────────────────────────────────────────────────
+pymupdf>=1.24.10
+
+# Phase 1 security uses Python standard-library HMAC JWT and SMTP; no extra auth package required.
+
+# ────────────────────────────────────────────────────────────────
+# Phase 8 professional database migrations / PostgreSQL
+# ────────────────────────────────────────────────────────────────
+alembic>=1.13.3,<2.0
+psycopg[binary]>=3.2.3,<4.0
