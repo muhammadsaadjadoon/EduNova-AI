@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>EduNova AI · Professional Teacher & Student Portal</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/analytics.css">
+<link rel="stylesheet" href="assets/css/runtime.css">
+
+</head>
+<body data-theme="dark" class="drawer-collapsed">
+<a class="skip-link" href="#mainContent">Skip to Learning Workspace</a>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-5"/></symbol>
+<symbol id="i-dashboard" viewBox="0 0 24 24"><path d="M4 13h6V4H4v9zM14 20h6V4h-6v16zM4 20h6v-3H4v3z"/></symbol>
+<symbol id="i-quiz" viewBox="0 0 24 24"><path d="M8 4h12v16H4V8l4-4z"/><path d="M8 4v4H4M9 12h6M9 16h8"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v6h6M12 7v6l4 2"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-8"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-.4-1 1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1-.4H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1-.4 1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 .4 1 1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.2.32.4.66.6 1h.1a2 2 0 1 1 0 4H20a1.7 1.7 0 0 0-.6 1z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></symbol>
+<symbol id="i-class" viewBox="0 0 24 24"><path d="M3 5h18v12H3z"/><path d="M8 21h8M12 17v4"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3L5.8 21 7 14.2 2 9.3l6.9-1L12 2z"/></symbol>
+</svg>
+<div class="toast-wrap" id="toastWrap"></div>
+<div id="authView" class="view active">
+  <div class="auth-shell">
+    <div class="auth-card">
+      <section class="auth-hero">
+        <span class="hero-kicker"><svg class="icon"><use href="#i-shield"></use></svg> AI-Powered Academic Management Platform</span>
+        <h1 class="hero-title">AI-Powered <span>Teaching &</span>  Learning.</h1>
+        <p class="hero-text">A next-generation academic platform where every teacher and student receives a secure personal workspace with AI quiz generation, virtual classrooms, academic profiles, performance analytics, revision tools, and complete learning management.</p>
+        <div class="hero-grid">
+          <div class="hero-stat"><b>AI Quiz</b><span>Smart Learning Engine</span></div>
+          <div class="hero-stat"><b>Workspace</b><span>Teacher & Student Portal</span></div>
+          <div class="hero-stat"><b>Smart PDF</b><span>Text based upload</span></div>
+        </div>
+        
+      </section>
+      <section class="auth-box">
+        <!-- AUTH BRAND TITLE UPDATE: professional app name block with controlled size and premium spacing. -->
+
+
+        <div class="auth-brand" aria-label="AI Quiz Generator brand">
+          <div class="auth-brand-main">
+            <div class="logo-mark auth-brand-mark"><svg class="icon"><use href="#i-shield"></use></svg></div>
+            <div class="auth-brand-copy">
+              <div class="auth-brand-title">EduNova<span> AI</span></div>
+              <div class="auth-brand-sub">Professional Academic Interface</div>
+            </div>
+          </div>
+          <div class="auth-brand-strip">AI Quiz Generation • Virtual Classrooms • Secure Workspace</div>
+        </div>
+        <div class="auth-welcome">
+          <b>Welcome</b>
+          <span>Sign in or create a clean role-based account. Each account keeps its own profile and avatar.</span>
+        </div>
+        <div class="tab-row" id="authTabs">
+          <button class="tab active" type="button" onclick="authTab('login')">Sign In</button>
+          <button class="tab" type="button" onclick="authTab('signup')">Create Account</button>
+        </div>
+        <form id="loginForm" onsubmit="event.preventDefault();login()">
+          <div class="form-group">
+            <label class="label">Username</label>
+            <input id="l_user" class="input" autocomplete="username" placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label class="label">Password</label>
+            <div class="input-wrap">
+              <input id="l_pass" type="password" class="input" autocomplete="current-password" placeholder="Enter password" style="padding-right:58px">
+              <button class="ghost-eye" type="button" onclick="togglePassword('l_pass',this)">Show</button>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin:2px 0 15px;gap:12px;flex-wrap:wrap">
+            <label class="hint" style="display:flex;align-items:center;gap:8px;margin:0"><input type="checkbox" id="rememberMe"> Remember this device</label>
+            <button class="link" type="button" onclick="authTab('forgot')">Forgot password?</button>
+          </div>
+          <button class="btn primary full" id="loginBtn" type="submit"><svg class="icon"><use href="#i-shield"></use></svg><span>Sign In</span></button>
+
+
+          <!-- AUTH SIGN IN GAP UPDATE: professional cards fill the empty space under the sign-in button. -->
+      
+        </form>
+        <form id="signupForm" class="hidden" onsubmit="event.preventDefault();signup()">
+          <label class="label">Select Your Account Type</label>
+          <div class="role-row">
+            <button type="button" class="role-option active" data-role="student" onclick="pickRole(this)">Student</button>
+            <button type="button" class="role-option" data-role="teacher" onclick="pickRole(this)">Teacher</button>
+          </div>
+          <div class="form-group">
+            <label class="label">Username</label>
+            <input id="s_user" class="input" autocomplete="username" placeholder="3–30 letters, numbers or _" oninput="validateSignupLive()">
+            <div id="userHint" class="validation-hint">Only letters, numbers, and underscores are allowed.</div>
+          </div>
+          <div class="form-group">
+            <label class="label">Email address</label>
+            <input id="s_email" type="email" class="input" autocomplete="email" placeholder="you@email.com" oninput="validateSignupLive()">
+            <div id="emailHint" class="validation-hint">Enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label class="label">Password</label>
+            <div class="input-wrap">
+              <input id="s_pass" type="password" class="input" autocomplete="new-password" placeholder="Strong password" oninput="validateSignupLive()" style="padding-right:58px">
+              <button class="ghost-eye" type="button" onclick="togglePassword('s_pass',this)">Show</button>
+            </div>
+            <div class="pass-rules">
+              <div class="pass-rule" id="pr_len">At least 8 characters</div>
+              <div class="pass-rule" id="pr_up">One uppercase letter</div>
+              <div class="pass-rule" id="pr_low">One lowercase letter</div>
+              <div class="pass-rule" id="pr_num">One number</div>
+              <div class="pass-rule" id="pr_spec">One special character</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="label">Confirm Password</label>
+            <div class="input-wrap">
+              <input id="s_confirm" type="password" class="input" autocomplete="new-password" placeholder="Re-enter password" oninput="validateSignupLive()" style="padding-right:58px">
+              <button class="ghost-eye" type="button" onclick="togglePassword('s_confirm',this)">Show</button>
+            </div>
+            <div id="confirmHint" class="validation-hint">Both passwords must match.</div>
+          </div>
+          <button class="btn primary full" id="signupBtn" type="submit"><svg class="icon"><use href="#i-user"></use></svg><span>Create Account</span></button>
+        </form>
+        <form id="forgotForm" class="hidden" onsubmit="event.preventDefault();forgotPassword()">
+          <button class="link" type="button" onclick="authTab('login')" style="margin-bottom:16px">← Return to Sign In</button>
+
+
+          <!-- FORGOT PASSWORD UPDATE: cleaner recovery card and simple reset steps. -->
+
+
+          <div class="forgot-pro-card"><b>Recover your account safely</b><span>Verify your registered email address to receive a secure verification code and create a new password.</span></div>
+          <div class="forgot-steps"><div>1 · Email</div><div>2 · Token</div><div>3 · New pass</div></div>
+          <div class="form-group">
+            <label class="label">Registered Email Address</label>
+            <input id="fp_email" type="email" class="input" placeholder="you@email.com">
+          </div>
+          <button class="btn primary full" id="forgotBtn" type="submit"><svg class="icon"><use href="#i-send"></use></svg><span>Send Verification Code</span></button>
+          <div id="resetArea" class="hidden" style="margin-top:14px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:16px;padding:14px">
+
+
+            <!-- SECURE RESET UPDATE: reset token is never printed on screen, so another person cannot use someone else's email to change the password. -->
+
+
+            <div class="hint" style="margin:0 0 8px">Secure reset verification</div>
+            <div class="forgot-pro-card" style="margin-bottom:14px"><b>Check the registered email</b><span>For security reasons, the verification code is sent only to your registered email address. Enter the received code to continue.</span></div>
+            <div class="form-group">
+              <label class="label">Reset code</label>
+              <input id="rp_token" class="input" autocomplete="one-time-code" placeholder="Enter reset code from email">
+            </div>
+            <div class="form-group" style="margin-top:14px">
+              <label class="label">New password</label>
+              <input id="rp_pass" type="password" class="input" autocomplete="new-password">
+            </div>
+            <button type="button" class="btn ghost full" onclick="resetPassword()">Set New Password</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+<div id="appView" class="view app-shell">
+  <header class="topbar">
+    <div class="top-left">
+      <button class="hamburger" onclick="toggleDrawer()" aria-label="Toggle menu"><svg class="icon"><use href="#i-menu"></use></svg></button>
+      <div class="mobile-app-title" aria-label="App name">
+        <span class="mobile-app-icon"><svg class="icon"><use href="#i-shield"></use></svg></span>
+        <span class="mobile-app-copy"><b>EduNova</b><small>AI</small></span>
+      </div>
+      <div class="logo brand-hide-sm">
+        <div class="logo-mark"><svg class="icon"><use href="#i-shield"></use></svg></div>
+        <div><div class="logo-title">EduNova AI</div><div class="logo-sub">Smart Learning Platform</div></div>
+      </div>
+    </div>
+    <div class="top-right">
+      <span class="badge mode-badge" id="modeBadge">STUDENT MODE</span>
+      <div class="status"><span id="healthDot" class="dot"></span><span id="healthTxt">checking</span></div>
+      <button class="btn ghost small top-settings-btn" onclick="openSettings()"><svg class="icon"><use href="#i-settings"></use></svg><span>Settings</span></button>
+      <div class="user-pill" onclick="openActiveProfile()">
+        <div class="avatar" id="topAvatar">?</div>
+        <div class="u-meta"><div id="topName" class="u-name">-</div><div id="topEmail" class="u-mail">-</div></div>
+      </div>
+    </div>
+  </header>
+  <div id="drawerBackdrop" class="mobile-backdrop" onclick="closeDrawer()"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="side-card">
+      <div class="mini-title">Signed in</div>
+      <div style="display:flex;gap:11px;align-items:center">
+        <div class="avatar" id="sideAvatar">?</div>
+        <div style="min-width:0"><div id="sideName" style="font-weight:950;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">-</div><div id="sideEmail" class="hint" style="margin:2px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">-</div></div>
+      </div>
+      <div class="pill-list" style="margin-top:12px"><span class="badge brand" id="sideRole">Student</span><span class="badge" id="sideClassCode">No class</span></div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-card" style="margin-top:16px">
+      <div class="mini-title">Workspace</div>
+      <div class="grid-2" style="grid-template-columns:1fr 1fr;gap:8px">
+        <div class="qbox"><b id="sideQuizCount">0</b><span>questions</span></div>
+        <div class="qbox"><b id="sideAnswered">0</b><span>answered</span></div>
+      </div>
+      <button class="btn danger small full" style="margin-top:12px" onclick="logout()">Sign Out</button>
+    </div>
+  </aside>
+  <main class="content" id="mainContent" tabindex="-1">
+    <div class="content-inner">
+      <section class="panel" id="studentDashboard">
+        <div class="dash-hero"><div><span class="badge brand">STUDENT LEARNING PORTAL</span><h1>Student dashboard</h1><p>Track your learning progress, complete class assignments, review quiz results, and improve your performance from one focused academic workspace.</p></div><div class="quick-actions"><button class="btn primary" onclick="showPanel('generatePanel')">Create test</button><button class="btn ghost" onclick="showPanel('historyPanel')">Review results</button><button class="btn ghost" onclick="showPanel('studentClassesPanel')">Classes</button></div></div>
+        <div class="grid-4 dash-kpis"><div class="kpi pro"><svg class="icon"><use href="#i-quiz"></use></svg><b id="sdSessions">0</b><span>Quiz sessions saved for review</span></div><div class="kpi pro"><svg class="icon"><use href="#i-chart"></use></svg><b id="sdBest">0%</b><span>Best academic score recorded</span></div><div class="kpi pro"><svg class="icon"><use href="#i-class"></use></svg><b id="sdAssignments">0</b><span>Teacher classes connected</span></div><div class="kpi pro"><svg class="icon"><use href="#i-star"></use></svg><b id="sdReady">New</b><span>Current learning status</span></div></div>
+        <div class="dash-grid"><div class="dash-card"><div class="card-title">Academic profile snapshot</div><div id="studentAcademicBox" class="dash-profile-list"></div><div class="quick-actions" style="margin-top:14px"><button class="btn ghost small" onclick="showPanel('profilePanel')">Complete profile</button><button class="btn ghost small" onclick="showPanel('statsPanel')">Open performance</button></div></div><div class="dash-card"><div class="card-title">Learning command center</div><div id="studentFocusBox" class="dash-step-list"></div><div class="notice" style="margin-top:14px">Generate MCQs, download the practice pack, attempt the quiz, then save the academic result card for records..</div></div></div>
+        <div class="grid-3 dash-feature-row"><div class="feature-card"><svg class="icon"><use href="#i-quiz"></use></svg><h3>Smart quiz creation</h3><p>Create MCQs from notes or PDF content and download a professional MCQ practice pack before attempting.</p></div><div class="feature-card"><svg class="icon"><use href="#i-history"></use></svg><h3>Academic result card</h3><p>View scores, profile details, and export your academic result as a PDF.</p></div><div class="feature-card"><svg class="icon"><use href="#i-book"></use></svg><h3>Revision workflow</h3><p>Use wrong-answer review, flashcards, and history to repeat weak questions with a clear study plan.</p></div></div>
+      </section>
+      <section class="panel" id="teacherDashboard">
+        <div class="dash-hero teacher"><div><span class="badge brand">TEACHER CONTROL CENTER</span><h1>Teacher dashboard</h1><p>Manage classes, quizzes, students, and academic progress from one secure workspace.</p></div><div class="quick-actions"><button class="btn primary" onclick="showPanel('teacherQuizPanel')">Assign quiz</button><button class="btn ghost" onclick="showPanel('teacherAssignmentsPanel')">Manage Quizzes</button><button class="btn ghost" onclick="showPanel('teacherStudentsPanel')">Classes</button></div></div>
+        <div class="grid-4 dash-kpis"><div class="kpi pro"><svg class="icon"><use href="#i-class"></use></svg><b id="tdCode">-</b><span>Teacher invite code</span></div><div class="kpi pro"><svg class="icon"><use href="#i-quiz"></use></svg><b id="tdAssignments">0</b><span>Assessments published</span></div><div class="kpi pro"><svg class="icon"><use href="#i-users"></use></svg><b id="tdStudents">0</b><span>Enrolled students</span></div><div class="kpi pro"><svg class="icon"><use href="#i-chart"></use></svg><b id="tdAvg">0%</b><span>Teacher profile readiness</span></div></div>
+        <div class="dash-grid"><div class="dash-card"><div class="card-title">Classroom command panel</div><div id="teacherWorkflowBox" class="dash-step-list"></div><div class="quick-actions" style="margin-top:14px"><button class="btn primary small" onclick="generateTeacherCode()">Copy teacher code</button><button class="btn ghost small" onclick="showPanel('teacherAnalyticsPanel')">View Analytics</button></div></div><div class="dash-card"><div class="card-title">Teacher academic identity</div><div id="teacherAcademicBox" class="dash-profile-list"></div><div class="quick-actions" style="margin-top:14px"><button class="btn ghost small" onclick="showPanel('teacherProfilePanel')">Update profile</button></div></div></div>
+        <div class="grid-3 dash-feature-row"><div class="feature-card"><svg class="icon"><use href="#i-send"></use></svg><h3>Assessment Workflow</h3><p>Create AI quizzes and publish assessments to your selected class.</p></div><div class="feature-card"><svg class="icon"><use href="#i-users"></use></svg><h3>Class Management</h3><p>Create multiple classes and manage approved students inside the right class instead of one mixed list.</p></div><div class="feature-card"><svg class="icon"><use href="#i-chart"></use></svg><h3>Academic oversight</h3><p>Monitor classes, assignments, and student progress with smart analytics.</p></div></div>
+      </section>
+      <section class="panel" id="generatePanel">
+        <div class="section-head"><div><h1>Generate AI Quiz</h1><p>Paste study notes or upload a text-based PDF. Generate MCQs, attempt them, submit once, and review your wrong answers clearly.</p></div><button class="btn ghost" onclick="loadHistory();showPanel('historyPanel')">Open history</button></div>
+        <div class="grid-2">
+          <div class="card card-pad" id="sourceCard"><div class="card-head"><div class="card-title">Source material</div><span class="badge" id="sourceBadge">TEXT</span></div><div class="form-group"><label class="label">Quiz Title <span class="soft">Optional</span></label><input id="quizTitle" class="input" placeholder="Example: Biology Chapter 3 · Final Revision"></div><div class="seg"><button id="textSeg" class="active" onclick="setSource('text')">Paste Notes</button><button id="pdfSeg" onclick="setSource('pdf')">Upload PDF</button></div><div id="textPane" class="source-pane active" style="margin-top:16px"><div class="form-group"><label class="label"><span>Study content</span><span id="charCount" class="soft mono">0 chars</span></label><textarea id="textData" class="textarea" placeholder="Paste lecture notes, textbook paragraphs, definitions, or chapter content here..."></textarea><div class="hint">Best results: 3–5 clear academic paragraphs with definitions, facts, processes, names, dates, terms, and relationships.</div></div></div><div id="pdfPane" class="source-pane" style="margin-top:16px"><div id="dropZone" class="drop"><input id="pdfInput" type="file" accept="application/pdf"><div><div class="pdf-badge">PDF</div><h3>Drop a PDF or Click to Upload</h3><p>Upload text-based academic PDFs. Scanned image PDFs may not extract well.</p></div></div><div class="file-line" id="fileLine"><div><b id="fileName">-</b><div id="fileSize" class="hint">-</div></div><button class="btn danger small" onclick="clearPdf()">Remove</button></div></div><div style="margin-top:18px" class="card-title">Question count</div><div class="count-grid" style="margin-top:12px"><button class="count-card active" onclick="pickCount(10,this)"><b>10</b><span>Quick Quiz</span></button><button class="count-card" onclick="pickCount(25,this)"><b>25</b><span>Standard Quiz</span></button><button class="count-card" onclick="pickCount(50,this)"><b>50</b><span>Extended Quiz</span></button><button class="count-card" onclick="pickCount(100,this)"><b>100</b><span>Full Quiz</span></button></div><div class="form-group" style="margin-top:12px"><label class="label">Custom Questions <span class="soft">1–250</span></label><input id="customCount" class="input" type="number" min="1" max="250" placeholder="Enter custom quantity"></div><button id="genBtn" class="btn primary full" onclick="generateQuiz()"><svg class="icon"><use href="#i-quiz"></use></svg><span>Generate AI Quiz</span></button><div class="quality-row"><div class="qbox"><b id="statWords">0</b><span>Words</span></div><div class="qbox"><b id="statSentences">0</b><span>Sentences</span></div><div class="qbox"><b id="statRead">0m</b><span>Estimated Time</span></div></div></div>
+          <div class="card quiz-shell" id="quizCard"><div class="card-head"><div><div class="card-title">Quiz Workspace</div><div class="hint">Select answers, submit the test, or download the MCQ PDF without attempting.</div></div><div class="badges"><span class="badge" id="timerBadge">00:00</span><span class="badge" id="progressBadge">0/0 answered</span></div></div><div id="scorePanel" class="score-panel"></div><div class="toolbar hidden" id="quizToolbar"><div class="badges" id="quizBadges"></div><div class="quick-actions"><button class="btn danger small" id="endQuizTopBtn" onclick="endQuizWithoutAttempt()">End Quiz</button><button class="filter active" onclick="filterQuiz('all',this)">All</button><button class="filter" onclick="filterQuiz('easy',this)">Easy</button><button class="filter" onclick="filterQuiz('medium',this)">Medium</button><button class="filter" onclick="filterQuiz('hard',this)">Hard</button></div></div><div class="progress"><div id="progressBar"></div></div><div id="quizOut" style="margin-top:14px"><div class="empty"><div><div class="empty-logo"><div class="logo-mark"><svg class="icon"><use href="#i-shield"></use></svg></div></div><h3>Ready to Begin</h3><p>Your generated questions will appear here in a clean exam layout.</p></div></div></div></div>
+        </div>
+      </section>
+      <section class="panel" id="studentClassesPanel">
+        <div class="assign-hero student-classes-hero">
+          <div>
+            <span class="badge brand">STUDENT CLASSROOM</span>
+            <h1>My Classes</h1>
+            <p>Join the correct teacher class here. Teacher code shows all classes from that teacher, while class code shows only one specific class.</p>
+          </div>
+          <div class="quick-actions"><button class="btn primary" onclick="renderStudentAssignments()">Refresh</button><button class="btn ghost" onclick="showPanel('sAssignmentsPanel')">Open assignments</button></div>
+        </div>
+        <div class="assign-kpi-grid">
+          <div class="assign-metric"><span>Joined classes</span><b id="asClassCode">0 classes</b><small>Your Joined Classes</small></div>
+          <div class="assign-metric"><span>Assignments</span><b id="asTotal">0</b><small>Assignments in Joined Classes</small></div>
+          <div class="assign-metric"><span>Total MCQs</span><b id="asQuestions">0</b><small>Questions assigned by teachers</small></div>
+          <div class="assign-metric"><span>Student code</span><b id="asStudentCode">-</b><small>Give this to your teacher for approval</small></div>
+        </div>
+        <div class="assign-layout student-classes-layout">
+          <div class="assign-side">
+            <div class="assign-card">
+              <div class="card-title">Student reference code</div>
+              <div class="assign-code-box"><span>Private student code</span><b id="asStudentAccessCode">-</b><small>Share this code with your teacher so they can approve you for a class.</small></div>
+              <button class="btn ghost full" style="margin-top:12px" onclick="copyStudentCode()">Copy student code</button>
+            </div>
+            <div class="assign-card join">
+              <div class="card-title">Join / find classes</div>
+              <div id="asCurrentClass" class="assign-class-chip">No teacher class connected</div>
+              <div class="form-group" style="margin-top:14px"><label class="label">Teacher code or class code</label><input id="joinClassCode" class="input" placeholder="Example: TCH-AB12 / CLS-1234"></div>
+              <button class="btn primary full" onclick="findTeacherClasses()">Show classes</button>
+              <div id="asTeacherClassPicker" class="student-class-results"></div>
+              <div class="notice" style="margin-top:14px">Teacher code = all classes from that teacher. Class code = only one class. Join with class key or teacher-approved student code.</div>
+            </div>
+            <div class="assign-card">
+              <div class="card-title">Student Profile</div>
+              <div id="asStudentBox" class="assign-info-list"></div>
+            </div>
+          </div>
+          <div class="assign-main">
+            <div class="assign-mini-board student-classes-board">
+              <div class="assign-mini-board-head"><div><div class="card-title">Joined & approved classes</div><p>Your joined classes and teacher-approved classes appear here only. Open any joined class to view its assignments in the Assignments section.</p></div><span class="badge" id="asJoinedCount">0 joined</span></div>
+              <div id="asClassList" class="assign-class-list"></div>
+            </div>
+            <div class="assign-card">
+              <div class="card-title">Class Access Guide</div>
+              <div class="assign-tool-grid" id="asFlowBox"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel" id="sAssignmentsPanel">
+        <div class="assign-hero student-assignments-hero assignment-pro-hero">
+          <div>
+            <span class="badge brand">STUDENT ASSESSMENT CENTER</span>
+            <h1>Assessments</h1>
+            <p>First select one of your joined classes, then view active assessments and submitted assessment results for that class in a clean workspace.</p>
+          </div>
+          <div class="quick-actions"><button class="btn primary" onclick="showPanel('studentClassesPanel')">Join classes</button><button class="btn ghost" onclick="renderStudentAssignments()">Refresh</button></div>
+        </div>
+        <div class="assignment-journey" aria-label="Assessment workflow">
+          <div class="assignment-journey-step active"><span>1</span><div><b>Choose class</b><small>Select where you want to work</small></div></div>
+          <div class="assignment-journey-line"></div>
+          <div class="assignment-journey-step"><span>2</span><div><b>Open assessment</b><small>Read details and start easily</small></div></div>
+          <div class="assignment-journey-line"></div>
+          <div class="assignment-journey-step"><span>3</span><div><b>Check result</b><small>Completed work stays separate</small></div></div>
+        </div>
+        <div class="assign-kpi-grid student-assign-kpis">
+          <div class="assign-metric"><span>Joined classes</span><b id="saClassCount">0</b><small>Choose class first</small></div>
+          <div class="assign-metric"><span>Active assessments</span><b id="saAssignmentTotal">0</b><small>Inside joined classes</small></div>
+          <div class="assign-metric"><span>Total MCQs</span><b id="saQuestionTotal">0</b><small>Teacher questions</small></div>
+          <div class="assign-metric"><span>Selected class</span><b id="saActiveClass">None</b><small>Assessments filtered by class</small></div>
+        </div>
+        <div class="assignment-command-grid student-assignment-workspace">
+          <div class="assign-card assignment-class-rail">
+            <div class="assign-list-head compact"><div><div class="card-title">My joined classes</div><p>Select a class to open its assessments.</p></div><span class="badge" id="studentAssignmentClassBadge">0 classes</span></div>
+            <div id="studentAssignmentsClassList" class="assignment-class-list"></div>
+            <div class="notice" style="margin-top:14px">Class join and teacher code tools stay in the Classes section. This workspace only shows joined classes and their work.</div>
+          </div>
+          <div class="assignment-detail-stack">
+            <div class="assign-card assignment-active-card">
+              <div class="assign-list-head compact"><div><div class="card-title" id="studentAssignmentDetailTitle">Class assessments</div><p id="studentAssignmentDetailHint">Select a joined class first.</p></div><span class="badge" id="asListBadge">0 active</span></div>
+              <div id="studentAssignmentsOut" class="student-assignment-list"></div>
+            </div>
+            <div class="assign-card assignment-submitted-card">
+              <div class="assign-list-head compact"><div><div class="card-title" id="studentSubmittedTitle">Submitted assessments</div><p>Your completed assessment attempts for the selected class appear here separately.</p></div><span class="badge good" id="studentAssignmentSubmittedBadge">0 submitted</span></div>
+              <div id="studentSubmittedAssignmentsOut" class="student-submitted-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel" id="historyPanel"><div class="section-head"><div><h1>History & review</h1><p>Review every quiz with clear source identity: self-created practice or teacher quiz with class name, teacher name, class code, subject, due date, score, and retake actions.</p></div><button class="btn ghost" onclick="loadHistory()">Refresh</button></div><div id="historyOut" class="card card-pad"></div></section>
+      <section class="panel" id="statsPanel"><div class="section-head"><div><h1>Performance</h1><p>Your metrics based on your quiz sessions and saved attempts.</p></div></div><div id="statsOut"></div></section>
+      <section class="panel" id="revisionPanel">
+        <!-- REVISION STUDIO PREMIUM CLASSIC FINAL: clean, simple, and working. -->
+        <div class="section-head rev-page-head">
+          <div>
+            <h1>Revision Studio</h1>
+            <p>A premium study room for saved quizzes, weak personal attempts, private notes, and a focused revision plan.</p>
+          </div>
+          <div class="quick-actions">
+            <button class="btn primary" onclick="saveCurrentRevisionSet()">Save current quiz</button>
+            <button class="btn ghost" onclick="exportRevisionPack()">Export pack</button>
+          </div>
+        </div>
+
+        <div class="rev-shell">
+          <div class="rev-hero">
+            <div class="rev-hero-copy">
+              <span class="rev-kicker">Clean academic workspace</span>
+              <h2>Revise with a clear plan.</h2>
+              <p>Save any generated quiz, preview questions before practice, repair quizzes under 75%, and keep useful study notes without messy panels or hidden gaps.</p>
+            </div>
+            <div class="rev-hero-actions">
+              <button class="btn primary" onclick="saveCurrentRevisionSet()">Save current</button>
+              <button class="btn ghost" onclick="startWeakRevision()">Open weak desk</button>
+              <button class="btn ghost" onclick="buildRevisionPlan()">Refresh plan</button>
+            </div>
+          </div>
+
+          <div class="rev-kpi-row">
+            <div class="rev-stat"><span>Questions ready</span><b id="revCardsMetric">0</b><small>Current practice deck</small></div>
+            <div class="rev-stat"><span>Saved sets</span><b id="revSetsMetric">0</b><small>Revision library</small></div>
+            <div class="rev-stat"><span>Weak quizzes</span><b id="revWeakMetric">0</b><small>Below 75% attempts</small></div>
+            <div class="rev-stat"><span>Selected set</span><b id="revDeckMetric">None</b><small id="revDeckHint">Open or save a set</small></div>
+          </div>
+
+          <div class="rev-card rev-library-card">
+            <div class="rev-card-head">
+              <div>
+                <div class="rev-card-title">My Revision Library</div>
+                <div class="rev-card-sub">Only One Saved quizz will stay here at a time with simple actions: study, start the same test, download PDF, or delete.</div>
+              </div>
+              <button class="btn small primary" onclick="saveCurrentRevisionSet()">Save current</button>
+            </div>
+            <div class="rev-library-board">
+              <div id="revisionLibrary" class="rev-list"></div>
+              <div id="revisionPracticeOut" class="rev-practice-panel"></div>
+            </div>
+          </div>
+
+          <div class="rev-tools-grid">
+            <div class="rev-card">
+              <div class="rev-card-head">
+                <div>
+                  <div class="rev-card-title">Auto Weak Revision Desk</div>
+                  <div class="rev-card-sub">Personal quizzes under 75% are stored here automatically for repair and retest.</div>
+                </div>
+                <button class="btn small ghost" onclick="startWeakRetest()">Retest</button>
+              </div>
+              <div id="weakRevisionOut" class="rev-weak-list"></div>
+            </div>
+
+            <div class="rev-card">
+              <div class="rev-card-head">
+                <div>
+                  <div class="rev-card-title">Private Notes</div>
+                  <div class="rev-card-sub">Save short notes, formulas, reminders, and weak concepts for later review.</div>
+                </div>
+                <button class="btn small primary" onclick="saveRevisionNotes()">Save note</button>
+              </div>
+              <div class="rev-note-stack">
+                <textarea id="revisionNotes" class="textarea rev-notes-area" placeholder="Write a short note here, then press Save note. Saved notes open in the full-width workspace below."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="rev-card rev-note-workspace">
+            <div class="rev-card-head">
+              <div>
+                <div class="rev-card-title">Saved Notes Workspace</div>
+                <div class="rev-card-sub">Open saved notes here without filling the writing box. Create MCQs, download notes, copy text, or delete old notes.</div>
+              </div>
+              <span class="badge brand" id="revNotesCount">0 notes</span>
+            </div>
+            <div class="rev-note-workspace-grid">
+              <div id="revisionNotesList" class="rev-notes-list"></div>
+              <div class="rev-note-reader">
+                <div>
+                  <span class="rev-label" id="revisionNoteReaderMeta">No note selected</span>
+                  <div class="rev-card-title" id="revisionNoteReaderTitle">Open a saved note</div>
+                  <div class="rev-card-sub" id="revisionNoteReaderHint">Select any saved note from the left side to view it here.</div>
+                </div>
+                <div id="revisionNoteReaderBody" class="rev-note-reader-body">No note selected yet.</div>
+                <div class="rev-action-row">
+                  <button class="btn small primary" onclick="makeMcqsFromOpenRevisionNote()">Make MCQs</button>
+                  <button class="btn small ghost" onclick="downloadOpenRevisionNote()">Download note</button>
+                  <button class="btn small ghost" onclick="copyOpenRevisionNote()">Copy note</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rev-card">
+            <div class="rev-card-head">
+              <div>
+                <div class="rev-card-title">Focused Study Plan</div>
+                <div class="rev-card-sub">A simple day-by-day plan built from your selected quiz, saved sets, weak desk, and revision goal.</div>
+              </div>
+              <button class="btn small ghost" onclick="buildRevisionPlan()">Refresh plan</button>
+            </div>
+            <div class="rev-inline-form">
+              <input id="revPlanGoal" class="input" placeholder="Goal e.g. Biology final, weak MCQs, chapter revision">
+              <input id="revPlanDays" class="input" type="number" min="3" max="14" value="7" title="Days">
+            </div>
+            <div id="revisionPlan" class="rev-plan-list"></div>
+          </div>
+        </div>
+      </section>
+      <section class="panel" id="teacherQuizPanel">
+        <div class="section-head teacher-quiz-head">
+          <div>
+            <h1>Assign quiz</h1>
+            <p>Create a ready quiz or study assignment for one selected class. Keep it simple: choose source, add content, then publish.</p>
+          </div>
+          <div class="quick-actions"><button class="btn ghost" onclick="showPanel('teacherAssignmentsPanel')">Back to assignments</button></div>
+        </div>
+        <div class="teacher-quiz-shell">
+          <div class="card card-pad teacher-quiz-builder">
+            <div class="teacher-quiz-topline">
+              <div>
+                <div class="card-title">Assignment details</div>
+                <p class="teacher-quiz-sub">One clean workspace for generated quiz, direct MCQs, MCQ PDF, or study PDF.</p>
+              </div>
+              <span class="badge brand" id="taModeBadge">CREATE QUIZ</span>
+            </div>
+            <div class="class-select-row teacher-quiz-class-row">
+              <div class="form-group"><label class="label">Select class</label><select id="taClassSelect" class="select"></select></div>
+              <div class="form-group"><label class="label">Class key</label><input id="taClassKeyView" class="input" readonly placeholder="Selected class key"></div>
+            </div>
+            <div class="teacher-source-tabs" role="tablist" aria-label="Assignment source type">
+              <button type="button" id="taModeCreate" class="active" onclick="setTeacherAssignmentMode('create')"><b>Create quiz</b><small>AI from notes</small></button>
+              <button type="button" id="taModeDirect" onclick="setTeacherAssignmentMode('direct')"><b>Direct MCQs</b><small>Ready questions</small></button>
+              <button type="button" id="taModeMcqPdf" onclick="setTeacherAssignmentMode('mcq_pdf')"><b>MCQ PDF</b><small>Extract MCQs</small></button>
+              <button type="button" id="taModeStudyPdf" onclick="setTeacherAssignmentMode('study_pdf')"><b>PDF</b><small>Generate Mcqs</small></button>
+            </div>
+            <div class="profile-fields teacher-quiz-fields">
+              <div class="form-group"><label class="label">Title</label><input id="taTitle" class="input" placeholder="Chapter 4 MCQ Practice"></div>
+              <div class="form-group"><label class="label">Subject</label><input id="taSubject" class="input" placeholder="Biology"></div>
+              <div class="form-group"><label class="label">Due date</label><input id="taDue" type="date" class="input"></div>
+              <div class="form-group"><label class="label">Questions</label><input id="taCount" type="number" min="1" max="250" value="10" class="input"></div>
+              <div class="form-group"><label class="label">Time limit <span class="soft">Optional</span></label><input id="taTimeLimit" type="number" min="0" max="300" value="0" class="input" placeholder="0 = no limit"><div class="hint">Enter minutes. Leave 0 for no time limit.</div></div>
+              <div class="form-group"><label class="label">Retake permission</label><select id="taAllowRetake" class="select"><option value="yes">Allow quiz retake</option><option value="no">One attempt only</option></select><div class="hint">Controls whether students can attempt this quiz again after submission.</div></div>
+            </div>
+            <div class="form-group"><label class="label">Instructions</label><input id="taInstructions" class="input" placeholder="Attempt once before Friday."></div>
+            <div id="taPaneCreate" class="teacher-source-pane active">
+              <div class="teacher-pane-note"><b>Create quiz from notes</b><span>Teacher pastes notes and the app creates a ready quiz before assigning. Student opens it directly.</span></div>
+              <div class="form-group"><label class="label">Source notes</label><textarea id="taContent" class="textarea" placeholder="Paste chapter notes, lecture points, definitions, or topic content here..."></textarea></div>
+            </div>
+            <div id="taPaneDirect" class="teacher-source-pane">
+              <div class="teacher-pane-note"><b>Direct MCQs</b><span>Paste ready MCQs. Student will start the same quiz directly, without generating anything.</span></div>
+              <div class="form-group"><label class="label">Ready MCQs</label><textarea id="taDirectMcqs" class="textarea" placeholder="1. What is photosynthesis?&#10;A. Food making process&#10;B. Water loss&#10;C. Cell division&#10;D. Respiration&#10;Answer: A"></textarea></div>
+            </div>
+            <div id="taPaneMcqPdf" class="teacher-source-pane">
+              <div class="teacher-pane-note"><b>MCQ PDF</b><span>Upload a text-based MCQ PDF. The app extracts only MCQs and assigns them as a direct quiz.</span></div>
+              <div class="teacher-file-card"><input id="taMcqPdf" type="file" accept="application/pdf" onchange="teacherPdfName('taMcqPdf','taMcqPdfName')"><div><b>Upload MCQ PDF</b><span id="taMcqPdfName">No file selected</span></div></div>
+              <div class="form-group"><label class="label">Optional paste backup</label><textarea id="taMcqPdfText" class="textarea compact" placeholder="If PDF is scanned, paste copied MCQ text here as backup."></textarea></div>
+            </div>
+            <div id="taPaneStudyPdf" class="teacher-source-pane">
+              <div class="teacher-pane-note"><b>PDF</b><span>Upload any PDF. Student can extract the text and generate MCQs from it when ready.</span></div>
+              <div class="teacher-file-card"><input id="taStudyPdf" type="file" accept="application/pdf" onchange="teacherPdfName('taStudyPdf','taStudyPdfName')"><div><b>Upload PDF</b><span id="taStudyPdfName">No file selected</span></div></div>
+              <div class="form-group"><label class="label">Optional study text / fallback</label><textarea id="taStudyText" class="textarea compact" placeholder="Paste study text here if PDF is scanned or image-based."></textarea></div>
+            </div>
+            <button id="teacherAssignBtn" class="btn primary full teacher-publish-btn" onclick="createAssignment()"><svg class="icon"><use href="#i-send"></use></svg><span id="taPublishText">Create quiz & assign</span></button>
+          </div>
+          <div class="teacher-quiz-side">
+            <div class="card card-pad teacher-preview-card">
+              <div class="card-title">Teacher preview</div>
+              <div id="teacherPreviewBox" class="teacher-preview-box"></div>
+            </div>
+            <div class="card card-pad teacher-simple-rules">
+              <div class="card-title">Simple flow</div>
+              <div class="teacher-rule-list">
+                <div><span>01</span><b>Create quiz / Direct MCQs / MCQ PDF</b><small>Student opens direct quiz immediately.</small></div>
+                <div><span>02</span><b>Study PDF</b><small>Student studies first, then generates MCQs.</small></div>
+                <div><span>03</span><b>Class progress</b><small>Marks save inside class analytics.</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel" id="teacherAssignmentsPanel">
+        <div class="assign-hero teacher-assignments-hero assignment-pro-hero">
+          <div>
+            <span class="badge brand">TEACHER ASSESSMENT CENTER</span>
+            <h1>Assessments</h1>
+            <p>First select a class, then assign new work, monitor assessment progress, and manage every quiz inside that class workspace.</p>
+          </div>
+          <div class="quick-actions"><button class="btn primary" onclick="teacherAssignToSelectedClass()">Create assessment</button><button class="btn ghost" onclick="renderTeacherAssignments()">Refresh</button></div>
+        </div>
+        <div class="assignment-journey teacher-journey" aria-label="Teacher assessment workflow">
+          <div class="assignment-journey-step active"><span>1</span><div><b>Choose class</b><small>Keep every class separate</small></div></div>
+          <div class="assignment-journey-line"></div>
+          <div class="assignment-journey-step"><span>2</span><div><b>Create assessment</b><small>Publish quiz or study material</small></div></div>
+          <div class="assignment-journey-line"></div>
+          <div class="assignment-journey-step"><span>3</span><div><b>Track progress</b><small>See submissions without clutter</small></div></div>
+        </div>
+        <div class="assignment-command-grid teacher-assignment-workspace">
+          <div class="assign-card assignment-class-rail">
+            <div class="assign-list-head compact"><div><div class="card-title">Teacher classes</div><p>Choose the class before assigning or reviewing progress.</p></div><span class="badge" id="teacherAssignmentClassBadge">0 classes</span></div>
+            <div id="teacherAssignmentClassList" class="assignment-class-list"></div>
+            <div class="quick-actions assignment-rail-actions"><button class="btn ghost small" onclick="showPanel('teacherStudentsPanel')">Manage classes</button><button class="btn ghost small" onclick="generateTeacherCode()">Copy teacher code</button></div>
+          </div>
+          <div class="assignment-detail-stack">
+            <div class="assign-card assignment-progress-card">
+              <div class="assign-list-head compact"><div><div class="card-title" id="teacherAssignmentWorkspaceTitle">Class progress</div><p id="teacherAssignmentWorkspaceHint">Select a class to view assessment progress.</p></div><button class="btn primary small" onclick="teacherAssignToSelectedClass()">Create assessment</button></div>
+              <div id="teacherAssignmentProgressOut" class="assignment-progress-list"></div>
+            </div>
+            <div class="assign-card assignment-active-card">
+              <div class="assign-list-head compact"><div><div class="card-title">Assessments in selected class</div><p>Manage published assessments for the current class only.</p></div><span class="badge" id="teacherAssignmentListBadge">0 assessments</span></div>
+              <div id="teacherAssignmentsOut" class="assignment-list student-assignment-list"></div>
+            </div>
+          </div>
+        </div>
+        <div id="teacherInlineAssignmentPreview" class="teacher-inline-assignment-preview" aria-live="polite"></div>
+      </section>
+      <section class="panel" id="teacherStudentsPanel">
+        <div class="classes-page-head">
+          <div><span class="classes-eyebrow">Teacher workspace</span><h1>Classes</h1><p>Create academic classes, share access details, approve students, and keep every class roster separate in one straightforward workspace.</p></div>
+          <div class="classes-page-actions"><button class="btn ghost" onclick="renderTeacherStudents()">Refresh</button><button class="btn primary" onclick="document.getElementById('tcName')?.focus()">Create a class</button></div>
+        </div>
+        <div id="teacherStudentsOut"></div>
+      </section>
+      <section class="panel" id="teacherAnalyticsPanel"><div class="section-head"><div><h1>Class analytics</h1><p>Academic view for teacher planning and class progress.</p></div></div><div id="teacherAnalyticsOut"></div></section>
+      <section class="panel" id="profilePanel"><div class="section-head"><div><h1>Profile</h1><p>Manage your profile details, academic identity, and personal settings in one clean place.</p></div><div class="quick-actions"><button class="btn ghost" onclick="openProfileModal()">Edit login</button><button class="btn primary" onclick="saveProfileDetails()">Save profile</button></div></div><div class="profile-grid"><div class="card card-pad profile-photo-box"><div class="avatar big" id="profilePhoto">?</div><div class="avatar-actions"><label class="btn ghost small"><input id="avatarInput" type="file" accept="image/*" class="hidden">Upload photo</label><button class="btn danger small" onclick="clearAvatar()">Remove photo</button></div><div class="profile-note-card"><b>Account photo</b><span>Photo is saved only for this account. If empty, clean initials are used.</span></div><div class="profile-photo-fill"><div class="profile-photo-stat"><span>Profile</span><b id="profileMiniName">Clean account</b></div><div class="profile-photo-stat"><span>Role</span><b id="profileMiniRole">Student</b></div><div class="profile-photo-stat"><span>Mobile</span><b id="profileMiniPhone">Not added</b></div><div class="profile-photo-stat"><span>Status</span><b>Private</b></div></div></div><div class="card card-pad"><div class="card-title" id="profileRoleTitle">Academic details</div><div class="profile-fields" style="margin-top:14px"><div class="form-group"><label class="label">Full name</label><input id="pd_fullName" class="input"></div><div class="form-group"><label class="label">Father name</label><input id="pd_fatherName" class="input"></div><div class="form-group"><label class="label">Email</label><input id="pd_email" type="email" class="input"></div><div class="form-group"><label class="label">Institute</label><input id="pd_institute" class="input"></div><div class="form-group"><label class="label">Department</label><input id="pd_department" class="input"></div><div class="form-group"><label class="label">Class / Semester</label><input id="pd_class" class="input"></div><div class="form-group"><label class="label" id="pd_id_label">Roll no / employee ID</label><input id="pd_academicId" class="input"></div><div class="form-group"><label class="label">Mobile no</label><input id="pd_phone" type="tel" class="input"></div></div><div class="form-group"><label class="label">Short bio</label><textarea id="pd_bio" class="textarea" style="min-height:123px"></textarea></div></div></div></section>
+      
+
+      <!-- TEACHER PROFILE PANEL UPDATE: separate profile screen for teacher accounts only. -->
+
+
+      <section class="panel" id="teacherProfilePanel"><div class="section-head"><div><h1>Profile</h1><p>Your identity, academic details, contact information, and classroom profile stay separate from the student profile screen.</p></div><div class="quick-actions"><button class="btn ghost" onclick="openProfileModal()">Edit login</button><button class="btn primary" onclick="saveTeacherProfileDetails()">Save profile</button></div></div><div class="profile-grid"><div class="card card-pad profile-photo-box"><div class="avatar big" id="teacherProfilePhoto">?</div><div class="avatar-actions"><label class="btn ghost small"><input id="teacherAvatarInput" type="file" accept="image/*" class="hidden">Update photo</label><button class="btn danger small" onclick="clearTeacherAvatar()">Remove photo</button></div><div class="teacher-profile-note"><b>Teacher account photo</b><span>This photo is linked only with the current teacher account and will not appear on student accounts.</span></div>
+
+
+<!-- TEACHER PROFILE GAP FILL UPDATE: useful teacher summary cards fill the lower empty area under the photo. -->
+
+
+<div class="teacher-profile-overview"><div class="teacher-profile-card wide"><span>Profile completion</span><b id="teacherMiniComplete">0% ready</b><div class="teacher-profile-meter"><div id="teacherMiniMeter"></div></div></div><div class="teacher-profile-card"><span>Teacher</span><b id="teacherMiniName">Teacher profile</b></div><div class="teacher-profile-card"><span>Email</span><b id="teacherMiniEmail">No email</b></div><div class="teacher-profile-card"><span>Mobile</span><b id="teacherMiniPhone">Not added</b></div><div class="teacher-profile-card"><span>Subject</span><b id="teacherMiniSubject">Not added</b></div><div class="teacher-profile-card"><span>Employee ID</span><b id="teacherMiniId">Not added</b></div><div class="teacher-profile-card"><span>Class code</span><b id="teacherMiniCode">Not generated</b></div></div><div class="teacher-profile-note teacher-profile-quick-note"><b>Ready for classroom use</b><span>Keep subject, class, mobile, qualification, and employee ID updated so your teacher panel stays complete.</span></div></div><div class="card card-pad"><div class="card-title">Teacher academic profile</div><div class="profile-fields" style="margin-top:14px"><div class="form-group"><label class="label">Full name</label><input id="tpd_fullName" class="input"></div><div class="form-group"><label class="label">Father name</label><input id="tpd_fatherName" class="input"></div><div class="form-group"><label class="label">Email</label><input id="tpd_email" type="email" class="input"></div><div class="form-group"><label class="label">Mobile no</label><input id="tpd_phone" type="tel" class="input"></div><div class="form-group"><label class="label">Institute</label><input id="tpd_institute" class="input"></div><div class="form-group"><label class="label">Department</label><input id="tpd_department" class="input"></div><div class="form-group"><label class="label">Designation</label><input id="tpd_designation" class="input" placeholder="Lecturer / Teacher / Professor"></div><div class="form-group"><label class="label">Qualification</label><input id="tpd_qualification" class="input" placeholder="BS / MS / MPhil / PhD"></div><div class="form-group"><label class="label">Subject taught</label><input id="tpd_teacherSubject" class="input"></div><div class="form-group"><label class="label">Class / section</label><input id="tpd_class" class="input"></div><div class="form-group" style="grid-column:1 / -1"><label class="label">Employee ID / Teacher code</label><input id="tpd_academicId" class="input"></div></div><div class="form-group"><label class="label">Teacher bio</label><textarea id="tpd_bio" class="textarea" style="min-height:123px"></textarea></div><div class="notice">This is a teacher-only panel. Students will not see teacher fields like designation, qualification, subject taught, or class code.</div></div></div></section>
+
+<section class="panel" id="aboutPanel">
+  <div class="section-head creator-head">
+    <div>
+      <span class="badge brand">App Vision</span>
+      <h1>Built for Smarter Learning</h1>
+      <p>A complete modern digital deep-learning academic platform for teachers and students.</p>
+    </div>
+  </div>
+
+  <!-- CREATOR HIGH LEVEL UPDATE: Founder-style app vision section. This is not a CV layout and it does not connect to any user profile. -->
+  <div class="creator-pro-shell">
+    <div class="creator-pro-left card card-pad">
+      <div class="creator-photo-frame">
+        <img src="assets/images/app-vision-photo.jpeg">
+        <div class="creator-award-ribbon">National Awardee</div>
+      </div>
+      <div class="creator-identity-card">
+        <span>Created by</span>
+        <b>Muhammad Saad Jadoon</b>
+        <small>Artificial Intelligence · University of Haripur</small>
+      </div>
+      <!-- CREATOR LEFT PANEL POLISH UPDATE: Replaced the four small CV-style boxes with one premium credibility panel. -->
+
+
+      <div class="creator-excellence-panel">
+        <div class="creator-excellence-head">
+          <span>Creator Credibility</span>
+          <b>Built with real learning focus</b>
+          <small>Built with an AI background and a clear focus on practical learning, smart quizzes, virtual classes, and student progress tools.</small>
+        </div>
+        <div class="creator-excellence-list">
+          <div><span>AI Focus</span><b>Deep Learning Academic Intelligence</b></div>
+          <div><span>App Standard</span><b>Complete Teacher & Student Portal</b></div>
+          <div><span>Built For</span><b>Virtual Classes, Quizzes, Results & Progress</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="creator-pro-main">
+      <div class="card card-pad creator-statement-card">
+        <div class="creator-eyebrow">Complete Deep Learning Academic Application</div>
+        <h2>About EduNova AI</h2>
+        <p>EduNova AI is a complete deep-learning academic application created to support teachers and students in a real digital learning environment. It allows teachers to create virtual classes, assign quizzes, take student assessments, review quiz results, and track academic progress through a clean and professional dashboard.</p>
+        <p>Students can generate quizzes and MCQs from study material, attempt practice tests, download quizzes and MCQ sets, join teacher virtual classes, complete assigned quizzes, review history, track performance, and improve learning through structured revision tools.</p>
+      </div>
+
+      <div class="creator-capability-grid">
+        <div class="creator-cap-card"><span>TEACHER WORKSPACE</span><b>Teachers can create virtual classes, generate class codes, assign quizzes, take assessments from students, review quiz results, and monitor student progress through a professional academic dashboard.</b></div>
+        <div class="creator-cap-card"><span>STUDENT WORKSPACE</span><b>Students can create quizzes from study content, generate MCQs, download quizzes and MCQ sets, join teacher virtual classes, attempt assigned quizzes, review history, and track performance.</b></div>
+        <div class="creator-cap-card"><span>DEEP LEARNING FOCUS</span><b>The app is built around deep-learning based academic assistance, helping convert learning material into structured quiz practice, MCQs, assessments, and revision support.</b></div>
+        <div class="creator-cap-card"><span>ROLE-BASED EXPERIENCE</span><b>Every teacher and student account keeps its own identity, profile, avatar, quiz history, class data, results, and progress records separate from the creator profile.</b></div>
+      </div>
+
+      <div class="card card-pad creator-bottom-strip">
+        <div><span>PURPOSE</span><b>To make quiz creation, classroom assessment, result review, and academic progress tracking faster, smarter, cleaner, and more useful for real educational environments.</b></div>
+        <div><span>APP EXPERIENCE</span><b>A modern teacher and student interface with secure account identity, professional classroom tools, quiz generation, downloadable MCQs, history, revision, and performance tracking.</b></div>
+        <div><span>PROFESSIONAL STANDARD</span><b>Designed as a complete academic application for real users, not a simple demo screen, with practical tools for teachers, students, classrooms, assessments, and learning improvement.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+    </div>
+  </main>
+</div>
+<div class="modal" id="settingsModal"><div class="modal-card"><div class="modal-head"><div><h2 style="margin:0">Settings</h2><p class="muted" style="margin:6px 0 0">Appearance, user behavior, and owner-protected backend connection.</p></div><button class="x" onclick="closeSettings()">×</button></div><div id="settingsBody"></div></div></div>
+<div class="modal" id="profileModal"><div class="modal-card" style="width:min(560px,100%)"><div class="modal-head"><div><h2 style="margin:0">Edit login details</h2><p class="muted" style="margin:6px 0 0">Username and email are updated on the backend for this account.</p></div><button class="x" onclick="closeProfileModal()">×</button></div><div class="form-group"><label class="label">Username</label><input id="editUsername" class="input"></div><div class="form-group"><label class="label">Email</label><input id="editEmail" type="email" class="input"></div><button class="btn primary full" onclick="saveAccountBasics()">Save login details</button><div class="hr"></div><div class="form-group"><label class="label">Current password</label><input id="oldPass" type="password" class="input"></div><div class="form-group"><label class="label">New password</label><input id="newPass" type="password" class="input"></div><button class="btn ghost full" onclick="changePassword()">Change password</button></div></div>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/analytics.js"></script>
+<script src="assets/js/runtime.js"></script>
+
+</body>
+</html>
+
