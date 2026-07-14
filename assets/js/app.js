@@ -13,6 +13,7 @@ let API=localStorage.getItem('aqg_api_base')||DEFAULT_API;
 
 
 let SESSION=null;
+let refreshPromise = null;
 const state={source:'text',count:10,pdf:null,quiz:[],sessionId:null,answered:{},submitted:false,filter:'all',startedAt:null,timer:null,history:[],flash:0,flashBack:false,mcqPrompted:false,retakeContext:null,activeAssignmentMeta:null};
 function readJSONRaw(v){try{return JSON.parse(v||'null')}catch{return null}}
 function readJSON(k,f){try{const v=JSON.parse(localStorage.getItem(k)||'');return v??f}catch{return f}}
@@ -22,14 +23,50 @@ function messageText(value,fallback='Something went wrong. Please try again.'){i
 function toast(msg,type='success'){const wrap=$('#toastWrap');const el=document.createElement('div');el.className='toast '+type;el.textContent=messageText(msg);wrap.appendChild(el);setTimeout(()=>el.remove(),3800)}
 function setBusy(btn,on){if(!btn)return;btn.disabled=!!on;btn.dataset.old=btn.dataset.old||btn.innerHTML;if(on)btn.innerHTML='Working...';else btn.innerHTML=btn.dataset.old}
 function responseErrorMessage(data,statusText){return messageText(data?.detail||data?.message||data?.error||data?.raw||statusText||'Request failed','Request failed. Please try again.')}
-async function refreshAuthSession(){
-  if(!SESSION?.refresh_token)return false;
-  try{
-    const res=await fetch(API+'/auth/refresh',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({refresh_token:SESSION.refresh_token})});
-    if(!res.ok)return false;
-    const data=await res.json();
-    SESSION={...SESSION,...data};persistSession();return true;
-  }catch{return false}
+async function refreshAuthSession() {
+    if (!SESSION?.refresh_token) return false;
+
+    if (refreshPromise) {
+        return refreshPromise;
+    }
+
+    refreshPromise = (async () => {
+        try {
+            const res = await fetch(API + "/auth/refresh", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    refresh_token: SESSION.refresh_token
+                })
+            });
+
+            if (!res.ok) {
+                return false;
+            }
+
+            const data = await res.json();
+
+            SESSION = {
+                ...SESSION,
+                ...data
+            };
+
+            persistSession();
+
+            return true;
+
+        } catch (e) {
+            console.error(e);
+            return false;
+
+        } finally {
+            refreshPromise = null;
+        }
+    })();
+
+    return refreshPromise;
 }
 async function request(path,opt={}){
   const isForm=opt.body instanceof FormData;
