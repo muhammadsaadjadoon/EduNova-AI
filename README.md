@@ -1,10 +1,10 @@
 # EduNova-AI
 
-An AI-powered learning platform that turns study material into interactive multiple-choice quizzes, built with Python, FastAPI, and a fine-tuned T5 model.
+AI-powered learning platform that transforms study material into interactive quizzes using a fine-tuned T5 question-generation model. Built with Python and FastAPI, it follows a structured MCQ generation pipeline to create high-quality questions, with a clean API and Docker-based deployment for scalable, AI-driven learning.
 
 ## Overview
 
-EduNova-AI converts raw study text into structured multiple-choice quizzes. A fine-tuned T5 question-generation model produces the questions, linguistic pipelines build the answers and distractors, and a production-style FastAPI backend provides user accounts, quiz sessions, attempt history, and containerized deployment.
+AI-powered learning platform that transforms study material into interactive quizzes using a fine-tuned T5 question-generation model. Built with Python and FastAPI, it follows a structured MCQ generation pipeline to create high-quality questions, with a clean API and Docker-based deployment for scalable, AI-driven learning.
 
 ## Key Features
 
