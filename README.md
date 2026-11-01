@@ -1,43 +1,52 @@
 # EduNova-AI
 
-The Complete AI Learning Platform — an AI-powered quiz generation and learning platform.
+An AI-powered quiz generation platform that turns study material into interactive multiple-choice quizzes, with attempt tracking and score comparison.
 
-## What it does
+## Overview
 
-EduNova-AI turns study material into interactive multiple-choice quizzes. Paste in text, and the platform generates a full quiz session — questions, correct answers, and distractors — then tracks your attempts so you can reattempt a session and compare scores over time.
+EduNova-AI is a full-stack AI application that converts raw study text into structured multiple-choice quizzes. A fine-tuned T5 question-generation model produces the questions, linguistic pipelines build the answers and distractors, and a production-style FastAPI backend provides user accounts, quiz sessions, attempt history, and containerized deployment.
 
-Platform features:
+## Key Features
 
-- AI quiz generation: generate 1–250 multiple-choice questions from any study text (`POST /api/v1/generate-quiz`)
-- Fine-tuned T5 question generation: a bundled fine-tuned T5 model (`t5_qg_finetuned/`) produces questions, with noun-phrase answer extraction, sentence-embedding and WordNet-based distractor generation, quality scoring, and difficulty modeling
-- Quiz sessions: create sessions, delete them, save completed attempts, and view per-session attempt history with score comparison
-- User accounts: profiles with avatar upload (base64), email/username/password updates, and a token-based forgot/reset password flow
-- Versioned REST API for users, profiles, sessions, and attempts
+- **AI Quiz Generation** — Generate 1–250 multiple-choice questions from any study text via `POST /api/v1/generate-quiz`
+- **Fine-Tuned T5 Engine** — A bundled fine-tuned T5 model (`t5_qg_finetuned/`) generates questions, with CPU/CUDA device-aware inference and fallback loading (fine-tuned → local pretrained → Hugging Face → template)
+- **Smart Distractors** — Noun-phrase answer extraction plus sentence-embedding and WordNet-based distractor generation, with quality scoring and difficulty modeling
+- **Quiz Sessions** — Create and delete quiz sessions, save completed attempts, and reattempt sessions
+- **Attempt History** — Per-session attempt history with score comparison to track progress over time
+- **User Accounts** — Profiles with avatar upload (base64) and email/username/password updates
+- **Password Recovery** — Token-based forgot/reset password flow
+- **Versioned REST API** — Clean `/api/v1` endpoints for users, profiles, sessions, and attempts
 
-## Tech stack
+## Tech Stack
 
-- Backend: Python 3.11/3.12, FastAPI, Uvicorn, Pydantic v2
-- AI/ML: PyTorch, Hugging Face Transformers, sentence-transformers, NLTK — fine-tuned T5 question generation with CPU/CUDA device-aware inference
-- Database: SQLAlchemy 2 + Alembic migrations; SQLite locally, PostgreSQL in production
-- Auth: Werkzeug password hashing, token-based password reset
-- Frontend: single-page interface (`index.html`)
-- Deployment: Docker, Docker Compose, Gunicorn with Uvicorn workers, Render-ready (`runtime.txt`)
+- **Backend:** Python 3.11/3.12, FastAPI, Uvicorn, Pydantic v2
+- **AI/ML:** PyTorch, Hugging Face Transformers, sentence-transformers, NLTK
+- **Database:** SQLAlchemy 2 with Alembic migrations — SQLite locally, PostgreSQL in production
+- **Auth:** Werkzeug password hashing, token-based password reset
+- **Frontend:** Single-page interface (`index.html`)
+- **Deployment:** Docker, Docker Compose, Gunicorn with Uvicorn workers, Render-ready (`runtime.txt`)
 
-## Project structure
+## Architecture
 
-- `app.py` — FastAPI backend (AI Quiz Generator Backend)
-- `ml_engine.py` — MCQ generation pipeline: T5 question generation, noun-phrase extraction, distractor generation, quality scoring
-- `difficulty_model.py` — question difficulty modeling
-- `db_manage.py` — database management helpers
-- `alembic/` — database migrations
-- `t5_qg_finetuned/` — bundled fine-tuned T5 question-generation model
-- `index.html` — frontend
-- `Dockerfile`, `docker-compose.yml` — containerized deployment
-- `scripts/`, `assets/` — supporting files
+- `app.py` — FastAPI application: quiz generation, user and profile management, quiz sessions, attempt tracking, and auth flows
+- `ml_engine.py` — MCQ generation pipeline: sentence splitting, POS tagging, noun-phrase extraction, T5 question generation, embedding and WordNet distractor generation, quality scoring
+- `difficulty_model.py` — Question difficulty modeling
+- `db_manage.py` — Database management helpers
+- `alembic/` — Database migrations
+- `t5_qg_finetuned/` — Bundled fine-tuned T5 question-generation model
+- `index.html` — Frontend interface
+- `Dockerfile`, `docker-compose.yml` — Containerized deployment (PostgreSQL database + app, with migrations run on startup)
+- `scripts/`, `assets/` — Supporting files
 
-## Getting started
+## Getting Started
 
-### Run locally
+### Prerequisites
+
+- Python 3.11 or 3.12
+- pip
+- (Optional) Docker and Docker Compose for the containerized setup
+
+### Run Locally
 
 ```bash
 python -m pip install --upgrade pip
@@ -45,7 +54,7 @@ python -m pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
-The API is served on http://127.0.0.1:8000.
+The API is served at http://127.0.0.1:8000.
 
 ### Run with Docker Compose
 
@@ -57,14 +66,18 @@ docker compose up --build
 
 This starts PostgreSQL and the app on port 8000, running database migrations first.
 
-## API overview
+## API Overview
 
-- `POST /api/v1/generate-quiz` — generate a quiz (1–250 questions)
-- `GET /api/v1/user/{user_id}/profile` / `PATCH /api/v1/user/{user_id}/profile` — user profile
-- `DELETE /api/v1/session/{session_id}` — delete a quiz session
-- `POST /api/v1/session/{session_id}/attempt` — save a completed attempt
-- `GET /api/v1/session/{session_id}/attempts` — attempt history with score comparison
-- `POST /auth/forgot-password` / `POST /auth/reset-password` — password reset flow
+| Endpoint | Description |
+| -------- | ----------- |
+| `POST /api/v1/generate-quiz` | Generate a quiz (1–250 questions) |
+| `GET /api/v1/user/{user_id}/profile` | Get a user profile |
+| `PATCH /api/v1/user/{user_id}/profile` | Update a user profile |
+| `DELETE /api/v1/session/{session_id}` | Delete a quiz session |
+| `POST /api/v1/session/{session_id}/attempt` | Save a completed attempt |
+| `GET /api/v1/session/{session_id}/attempts` | Attempt history with score comparison |
+| `POST /auth/forgot-password` | Request a password reset |
+| `POST /auth/reset-password` | Reset the password |
 
 ## Author
 
